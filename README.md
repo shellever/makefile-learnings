@@ -9,6 +9,10 @@
 注：此编译结构的实现借鉴于u-boot-1.1.6中的编译结构
 ```
 
+## 编译日志
+[005-mk-config-rules/firstme.txt](./005-mk-config-rules/firstme.txt firstme.txt)
+
+
 ## 参考文章
 [一个工程实例来学习 Makefile](https://www.cnblogs.com/OpenShiFt/p/4313351.html)
 
