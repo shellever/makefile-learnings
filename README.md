@@ -10,7 +10,7 @@
 ```
 
 ## 编译日志
-[005-mk-config-rules/firstme.txt](./005-mk-config-rules/firstme.txt firstme.txt)
+![005-mk-config-rules/firstme.txt](./005-mk-config-rules/firstme.txt firstme.txt)
 
 
 ## 参考文章
