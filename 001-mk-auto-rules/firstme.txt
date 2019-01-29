@@ -1,0 +1,62 @@
+// 使用自动推到规则编译目标文件
+Curdir: ~/workspace/Makefile/mk-auto-rules
+linuxfor@pc-u16-d64$ make
+gcc -o main.o -Iadd -Isub -c main.c 
+gcc -o add/add_float.o -Iadd -Isub -c add/add_float.c 
+gcc -o add/add_int.o -Iadd -Isub -c add/add_int.c 
+gcc -o sub/sub_float.o -Iadd -Isub -c sub/sub_float.c 
+gcc -o sub/sub_int.o -Iadd -Isub -c sub/sub_int.c 
+gcc -o main main.o add/add_float.o add/add_int.o sub/sub_float.o sub/sub_int.o
+
+
+
+// 修改add/add.h头文件，添加DEBUG_ADD宏开关后重新编译
+// 在依赖条件中有add/add.h的目标都重新编译生成，最终重新链接生成可执行程序
+Curdir: ~/workspace/Makefile/mk-auto-rules
+linuxfor@pc-u16-d64$ make
+gcc -o main.o -Iadd -Isub -c main.c 
+gcc -o add/add_float.o -Iadd -Isub -c add/add_float.c 
+gcc -o add/add_int.o -Iadd -Isub -c add/add_int.c 
+gcc -o main main.o add/add_float.o add/add_int.o sub/sub_float.o sub/sub_int.o
+
+
+
+// 测试main程序
+Curdir: ~/workspace/Makefile/mk-auto-rules
+linuxfor@pc-u16-d64$ ./main 
+float x-y IS:0.000000
+int a+b IS:22
+int a-b IS:-2
+float x+y IS:11.100000
+float x-y IS:11.100000
+float x-y IS:-8.639999
+
+
+
+// 
+// 自动生成依赖关系
+Curdir: ~/workspace/Makefile/mk-auto-rules
+linuxfor@pc-u16-d64$ gcc -MM -Iadd -Isub main.c
+main.o: main.c add/add.h sub/sub.h
+
+Curdir: ~/workspace/Makefile/mk-auto-rules
+linuxfor@pc-u16-d64$ gcc -MM -Iadd -Isub add/add_int.c
+add_int.o: add/add_int.c
+
+Curdir: ~/workspace/Makefile/mk-auto-rules
+linuxfor@pc-u16-d64$ gcc -MM -Iadd -Isub add/add_float.c
+add_float.o: add/add_float.c
+
+Curdir: ~/workspace/Makefile/mk-auto-rules
+linuxfor@pc-u16-d64$ gcc -MM -Iadd -Isub sub/sub_float.c
+sub_float.o: sub/sub_float.c
+
+Curdir: ~/workspace/Makefile/mk-auto-rules
+linuxfor@pc-u16-d64$ gcc -MM -Iadd -Isub sub/sub_int.c
+sub_int.o: sub/sub_int.c
+
+
+// 自动保存生成的依赖关系
+$ gcc -MM -Iadd -Isub main.c -MF main.d
+
+

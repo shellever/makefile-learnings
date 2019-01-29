@@ -1,0 +1,16 @@
+// =================================================================
+// 参考文章
+一个工程实例来学习 Makefile
+https://www.cnblogs.com/OpenShiFt/p/4313351.html
+
+example1    // 命令行编译程序
+example2    // 多文件的Makefile
+example3    // 使用用户自定义变量的Makefile
+example4    // 使用预定义变量的Makefile，使用自动变量的Makefile
+example5    // 设置搜索路径
+example6    // 自动推导规则
+example7    // 递归make
+example8    // Makefile中的函数
+
+
+

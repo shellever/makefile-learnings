@@ -1,0 +1,19 @@
+[问题描述]
+20190129-Makefile-rules-3-missing-separator-stop
+Curdir: ~/workspace/Makefile/mk-separate-rules
+linuxfor@pc-u16-d64$ make add/libadd.a 
+make -C add/
+make[1]: Entering directory '/home/linuxfor/workspace/Makefile/mk-separate-rules/add'
+../Makefile.rules:3: *** missing separator.  Stop.
+make[1]: Leaving directory '/home/linuxfor/workspace/Makefile/mk-separate-rules/add'
+Makefile:20: recipe for target 'add/libadd.a' failed
+make: *** [add/libadd.a] Error 2
+
+[根因分析]
+原先将自动生成.depend依赖关系放在Makefile.rules文件中，
+但是由于Makefile.rules文件不能识别成mk文件，所以tab键被自动转换成空格键，
+导致Makefile文件中目标依赖下的命令无法被识别出来，从而导致编译失败。
+
+[解决方法]
+将原先的Makefile.rules文件重命名为rules.mk文件，然后重新按tab键即可。
+
